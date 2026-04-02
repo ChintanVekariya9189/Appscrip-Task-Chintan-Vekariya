@@ -178,132 +178,86 @@ const Footer = () => {
               <div className={styles.paymentIcons}>
                 {/* Google Pay */}
                 <div className={styles.paymentCard}>
-                  <svg
-                    viewBox="0 0 80 32"
-                    style={{ width: '50px', height: '18px', display: 'block' }}
-                  >
-                    <text
-                      x="0"
-                      y="24"
-                      fontFamily="Arial, sans-serif"
-                      fontSize="22"
-                      fontWeight="500"
-                    >
-                      <tspan fill="#4285F4">G</tspan>
-                      <tspan fill="#EA4335">o</tspan>
-                      <tspan fill="#FBBC05">o</tspan>
-                      <tspan fill="#4285F4">g</tspan>
-                      <tspan fill="#34A853">l</tspan>
-                      <tspan fill="#EA4335">e</tspan>
-                    </text>
-                    <text
-                      x="53"
-                      y="24"
-                      fontFamily="Arial, sans-serif"
-                      fontSize="22"
-                      fontWeight="500"
-                      fill="#5F6368"
-                    >
-                      Pay
-                    </text>
-                  </svg>
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/1280px-Google_Pay_Logo.svg.png"
+                    alt="Google Pay"
+                    style={{
+                      width: '40px',
+                      height: 'auto',
+                      display: 'block',
+                      objectFit: 'contain',
+                    }}
+                  />
                 </div>
 
                 {/* Mastercard */}
                 <div className={styles.paymentCard}>
-                  <svg
-                    viewBox="0 0 44 28"
-                    style={{ width: '34px', height: '22px', display: 'block' }}
-                  >
-                    <circle cx="16" cy="14" r="14" fill="#EB001B" />
-                    <circle cx="28" cy="14" r="14" fill="#F79E1B" />
-                    <path
-                      d="M22 4.9a14 14 0 0 1 0 18.2A14 14 0 0 1 22 4.9z"
-                      fill="#FF5F00"
-                    />
-                  </svg>
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png"
+                    alt="Mastercard"
+                    style={{
+                      width: '40px',
+                      height: 'auto',
+                      display: 'block',
+                      objectFit: 'contain',
+                    }}
+                  />
                 </div>
 
                 {/* PayPal */}
                 <div className={styles.paymentCard}>
-                  <svg
-                    viewBox="0 0 88 30"
-                    style={{ width: '46px', height: '16px', display: 'block' }}
-                  >
-                    <text
-                      x="2"
-                      y="24"
-                      fontFamily="Arial, sans-serif"
-                      fontWeight="900"
-                      fontStyle="italic"
-                      fontSize="26"
-                      fill="#003087"
-                    >
-                      Pay
-                    </text>
-                    <text
-                      x="40"
-                      y="24"
-                      fontFamily="Arial, sans-serif"
-                      fontWeight="900"
-                      fontStyle="italic"
-                      fontSize="26"
-                      fill="#009cde"
-                    >
-                      Pal
-                    </text>
-                  </svg>
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png"
+                    alt="PayPal"
+                    style={{
+                      width: '45px',
+                      height: 'auto',
+                      display: 'block',
+                      objectFit: 'contain',
+                    }}
+                  />
                 </div>
 
                 {/* Amex */}
                 <div className={styles.paymentCard}>
-                  <div className={styles.amexCard}>
-                    <span className={styles.amexTop}>AMERICAN</span>
-                    <span className={styles.amexBottom}>EXPRESS</span>
-                  </div>
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/American_Express_logo.svg/1200px-American_Express_logo.svg.png"
+                    alt="Amex"
+                    style={{
+                      width: '40px',
+                      height: 'auto',
+                      display: 'block',
+                      objectFit: 'contain',
+                    }}
+                  />
                 </div>
 
                 {/* Apple Pay */}
                 <div className={styles.paymentCard}>
-                  <div className={styles.applePayInner}>
-                    <svg
-                      viewBox="0 0 14 17"
-                      style={{
-                        width: '11px',
-                        height: '13px',
-                        display: 'block',
-                        flexShrink: 0,
-                      }}
-                      fill="black"
-                    >
-                      <path d="M12.07 8.9c-.02-1.96 1.6-2.9 1.67-2.95-0.91-1.33-2.33-1.51-2.84-1.53-1.21-.12-2.37.71-2.98.71-.62 0-1.57-.7-2.58-.68C3.9 4.47 2.64 5.2 1.95 6.37.54 8.75 1.6 12.25 2.96 14.17c.67.96 1.47 2.04 2.51 2 1.01-.04 1.4-.65 2.62-.65 1.22 0 1.57.65 2.63.63 1.09-.02 1.78-.98 2.44-1.94.77-1.11 1.09-2.19 1.1-2.25-.02-.01-2.11-.81-2.19-3.06zm-2.04-5.62c.55-.67.93-1.6.82-2.53-.8.03-1.76.53-2.33 1.19-.51.59-.96 1.54-.84 2.45.89.07 1.8-.45 2.35-1.11z" />
-                    </svg>
-                    <span className={styles.applePayText}>Pay</span>
-                  </div>
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Apple_Pay_logo.svg/1280px-Apple_Pay_logo.svg.png"
+                    alt="Apple Pay"
+                    style={{
+                      width: '40px',
+                      height: 'auto',
+                      display: 'block',
+                      objectFit: 'contain',
+                    }}
+                  />
                 </div>
 
-                {/* Shop Pay — purple */}
+                {/* Shop Pay */}
                 <div className={`${styles.paymentCard} ${styles.shopPayCard}`}>
-                  <div className={styles.shopPayInner}>
-                    <svg
-                      viewBox="0 0 13 14"
-                      style={{
-                        width: '11px',
-                        height: '12px',
-                        display: 'block',
-                        flexShrink: 0,
-                      }}
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M2 3.5h9l-1 7H3L2 3.5z" />
-                      <path d="M4.5 3.5S4 1.5 6.5 1.5 8.5 3.5 8.5 3.5" />
-                    </svg>
-                    <span>Pay</span>
-                  </div>
+                  <img
+                    src="https://1000logos.net/wp-content/uploads/2024/07/Shop-Pay-Emblem.png"
+                    alt="Shop Pay"
+                    style={{
+                      width: '45px',
+                      height: 'auto',
+                      display: 'block',
+                      objectFit: 'contain',
+                    }}
+                  />
                 </div>
               </div>
             </div>

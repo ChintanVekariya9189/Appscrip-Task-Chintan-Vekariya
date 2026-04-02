@@ -242,59 +242,9 @@
   object-fit: contain;
 }
 
-/* ── GPay ── */
-.gpayText {
-  display: flex;
-  align-items: center;
-  gap: 1px;
-}
-.gpayG { font-size: 15px; font-weight: 700; font-family: sans-serif; }
-.gpayG span:nth-child(1) { color: #4285f4; }
-.gpayG span:nth-child(2) { color: #ea4335; }
-.gpayG span:nth-child(3) { color: #fbbc05; }
-.gpayG span:nth-child(4) { color: #34a853; }
-.gpayPay { font-size: 13px; font-weight: 500; color: #555; margin-left: 2px; }
-
-/* ── Amex ── */
-.amexCard {
-  background: #016fd0;
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  padding: 2px 4px;
-}
-.amexTop { font-size: 7px; font-weight: 800; letter-spacing: 0.5px; line-height: 1.1; }
-.amexBottom { font-size: 9px; font-weight: 900; letter-spacing: 0.3px; line-height: 1.1; }
-
-/* ── Apple Pay ── */
-.applePayInner {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  color: #000;
-}
-.applePayInner svg { flex-shrink: 0; }
-.applePayText { font-size: 14px; font-weight: 600; font-family: -apple-system, sans-serif; letter-spacing: -0.3px; }
-
 /* ── Shop Pay (purple) ── */
 .shopPayCard {
   background: #5a31f4 !important;
-}
-.shopPayInner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: -0.2px;
-  font-family: sans-serif;
 }
 
 .copyright {
