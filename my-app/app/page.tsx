@@ -4,6 +4,7 @@ import Hero from '@/components/home/Hero';
 import ProductFeed from '@/components/home/ProductFeed';
 import JsonLd from '@/components/seo/JsonLd';
 import { Metadata } from 'next';
+import { products as localProducts } from '@/data/products';
 
 export const metadata: Metadata = {
   title: 'Discover Our Products | Appscrip Task',
@@ -18,32 +19,33 @@ export const metadata: Metadata = {
 };
 
 async function getProducts() {
-  try {
-    const res = await fetch(
-      'https://api.escuelajs.co/api/v1/products?offset=0&limit=21',
-      {
-        next: { revalidate: 3600 }, // Cache for 1 hour
-      },
-    );
+  // try {
+  //   const res = await fetch(
+  //     'https://api.escuelajs.co/api/v1/products?offset=0&limit=21',
+  //     {
+  //       next: { revalidate: 3600 }, // Cache for 1 hour
+  //     },
+  //   );
 
-    if (!res.ok) throw new Error('Failed to fetch products');
+  //   if (!res.ok) throw new Error('Failed to fetch products');
 
-    const data = await res.json();
+  //   const data = await res.json();
 
-    // Map Platzi API to our component schema
-    return data.map((item: any) => ({
-      id: item.id,
-      title: item.title,
-      price: item.price,
-      description: item.description,
-      // Map first image, handling potential string or array
-      image: Array.isArray(item.images) ? item.images[0] : item.images,
-      category: item.category?.name || 'Uncategorized',
-    }));
-  } catch (error) {
-    console.error('Error fetching products:', error);
-    return []; // Return empty array on failure
-  }
+  //   // Map Platzi API to our component schema
+  //   return data.map((item: any) => ({
+  //     id: item.id,
+  //     title: item.title,
+  //     price: item.price,
+  //     description: item.description,
+  //     // Map first image, handling potential string or array
+  //     image: Array.isArray(item.images) ? item.images[0] : item.images,
+  //     category: item.category?.name || 'Uncategorized',
+  //   }));
+  // } catch (error) {
+  //   console.error('Error fetching products:', error);
+  //   return []; // Return empty array on failure
+  // }
+  return localProducts;
 }
 
 export default async function Home() {
