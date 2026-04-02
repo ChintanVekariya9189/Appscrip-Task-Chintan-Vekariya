@@ -17,11 +17,33 @@ export const metadata: Metadata = {
   },
 };
 
-import { products as dummyProducts } from '@/data/products';
-
 async function getProducts() {
-  // Simulating a fast server-side "fetch" from local data
-  return dummyProducts;
+  try {
+    const res = await fetch(
+      'https://api.escuelajs.co/api/v1/products?offset=0&limit=15',
+      {
+        next: { revalidate: 3600 }, // Cache for 1 hour
+      },
+    );
+
+    if (!res.ok) throw new Error('Failed to fetch products');
+
+    const data = await res.json();
+
+    // Map Platzi API to our component schema
+    return data.map((item: any) => ({
+      id: item.id,
+      title: item.title,
+      price: item.price,
+      description: item.description,
+      // Map first image, handling potential string or array
+      image: Array.isArray(item.images) ? item.images[0] : item.images,
+      category: item.category?.name || 'Uncategorized',
+    }));
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return []; // Return empty array on failure
+  }
 }
 
 export default async function Home() {

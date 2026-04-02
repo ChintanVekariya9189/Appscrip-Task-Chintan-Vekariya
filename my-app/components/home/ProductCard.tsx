@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './ProductCard.module.css';
@@ -15,16 +17,34 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [imgSrc, setImgSrc] = useState(product.image);
+
+  const fallbackImage = 'https://placehold.co/400x400?text=No+Image';
+
+  // Function to check if a URL is valid for Next.js Image (must be absolute or start with /)
+  const isValidUrl = (url: string) => {
+    if (!url) return false;
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return url.startsWith('/') || url.startsWith('http');
+    }
+  };
+
+  const finalSrc = isValidUrl(imgSrc) ? imgSrc : fallbackImage;
 
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
         <Image 
-          src={product.image} 
+          src={finalSrc} 
           alt={product.title} 
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className={styles.image}
+          onError={() => setImgSrc(fallbackImage)}
+          unoptimized={finalSrc?.includes('placehold.co')}
         />
         {product.id % 5 === 0 && (
           <div className={styles.badge}>NEW PRODUCT</div>
