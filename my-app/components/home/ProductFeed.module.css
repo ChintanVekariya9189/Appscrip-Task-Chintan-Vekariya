@@ -1,0 +1,94 @@
+.metaBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 32px;
+}
+
+.itemCount {
+  font-weight: 700;
+  flex: 0 0 100px;
+}
+
+.toggleFilters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.sortDropdown {
+  position: relative;
+}
+
+.sortDropdown select {
+  border: none;
+  background: none;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  padding-right: 20px;
+}
+
+.sortDropdown::after {
+  content: '▼';
+  font-size: 10px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.contentLayout {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.sidebarWrapper {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.gridWrapper {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .metaBar {
+    padding: 16px 0;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .itemCount {
+    display: none; /* Hide count on mobile bar as per design usually */
+  }
+
+  .toggleFilters {
+    order: 1;
+  }
+
+  .sortDropdown {
+    order: 2;
+  }
+
+  .contentLayout {
+    flex-direction: column;
+  }
+
+  .sidebarWrapper {
+    width: 100%;
+  }
+}

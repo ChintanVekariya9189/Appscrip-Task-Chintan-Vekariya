@@ -1,0 +1,128 @@
+.header {
+  width: 100%;
+  background: var(--secondary-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.topBanner {
+  background: var(--bg-banner);
+  color: #EB4C6B; /* Based on the red icons in top bar */
+  font-size: 12px;
+  padding: 8px 0;
+  overflow: hidden;
+}
+
+.bannerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.bannerItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.mainHeader {
+  padding: 24px 0;
+}
+
+.mainHeaderContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftSection {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.logoSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.rightSection {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+}
+
+.rightSection button {
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+.rightSection button:hover {
+  opacity: 0.7;
+}
+
+.languageSelector {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nav {
+  padding: 16px 0 32px;
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.navList li a {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.navList li a:hover {
+  color: var(--text-muted);
+}
+
+@media (max-width: 1024px) {
+  .navList {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hideMobile {
+    display: none;
+  }
+  
+  .navList {
+    display: none; /* Mobile will have a burger menu usually, but for now I'll hide */
+  }
+
+  .bannerContent {
+    justify-content: center;
+  }
+
+  .bannerItem:not(:first-child) {
+    display: none;
+  }
+}
