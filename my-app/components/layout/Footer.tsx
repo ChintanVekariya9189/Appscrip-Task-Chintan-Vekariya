@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -40,7 +41,6 @@ const Footer = () => {
                     width="24"
                     height="24"
                     viewBox="0 0 7410 3900"
-                    style={{ borderRadius: '50%' }}
                   >
                     <rect width="7410" height="3900" fill="#b22234" />
                     <path
@@ -178,85 +178,61 @@ const Footer = () => {
               <div className={styles.paymentIcons}>
                 {/* Google Pay */}
                 <div className={styles.paymentCard}>
-                  <img
+                  <Image
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/1280px-Google_Pay_Logo.svg.png"
                     alt="Google Pay"
-                    style={{
-                      width: '40px',
-                      height: 'auto',
-                      display: 'block',
-                      objectFit: 'contain',
-                    }}
+                    width={45}
+                    height={28}
                   />
                 </div>
 
                 {/* Mastercard */}
                 <div className={styles.paymentCard}>
-                  <img
+                  <Image
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png"
                     alt="Mastercard"
-                    style={{
-                      width: '40px',
-                      height: 'auto',
-                      display: 'block',
-                      objectFit: 'contain',
-                    }}
+                    width={45}
+                    height={28}
                   />
                 </div>
 
                 {/* PayPal */}
                 <div className={styles.paymentCard}>
-                  <img
+                  <Image
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png"
                     alt="PayPal"
-                    style={{
-                      width: '45px',
-                      height: 'auto',
-                      display: 'block',
-                      objectFit: 'contain',
-                    }}
+                    width={50}
+                    height={30}
                   />
                 </div>
 
                 {/* Amex */}
                 <div className={styles.paymentCard}>
-                  <img
+                  <Image
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/American_Express_logo.svg/1200px-American_Express_logo.svg.png"
                     alt="Amex"
-                    style={{
-                      width: '40px',
-                      height: 'auto',
-                      display: 'block',
-                      objectFit: 'contain',
-                    }}
+                    width={45}
+                    height={28}
                   />
                 </div>
 
                 {/* Apple Pay */}
                 <div className={styles.paymentCard}>
-                  <img
+                  <Image
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Apple_Pay_logo.svg/1280px-Apple_Pay_logo.svg.png"
                     alt="Apple Pay"
-                    style={{
-                      width: '40px',
-                      height: 'auto',
-                      display: 'block',
-                      objectFit: 'contain',
-                    }}
+                    width={45}
+                    height={28}
                   />
                 </div>
 
                 {/* Shop Pay */}
                 <div className={`${styles.paymentCard} ${styles.shopPayCard}`}>
-                  <img
+                  <Image
                     src="https://1000logos.net/wp-content/uploads/2024/07/Shop-Pay-Emblem.png"
                     alt="Shop Pay"
-                    style={{
-                      width: '45px',
-                      height: 'auto',
-                      display: 'block',
-                      objectFit: 'contain',
-                    }}
+                    width={50}
+                    height={30}
                   />
                 </div>
               </div>

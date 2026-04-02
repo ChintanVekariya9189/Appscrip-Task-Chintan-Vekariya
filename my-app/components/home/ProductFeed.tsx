@@ -30,15 +30,18 @@ interface EnrichedProduct extends Product {
 }
 
 /* ── Attribute mappings based on category ─────────── */
-const CATEGORY_ATTRIBUTES: Record<string, {
-  occasion: string[];
-  work: string[];
-  fabric: string[];
-  segment: string[];
-  suitableFor: string[];
-  rawMaterials: string[];
-  pattern: string[];
-}> = {
+const CATEGORY_ATTRIBUTES: Record<
+  string,
+  {
+    occasion: string[];
+    work: string[];
+    fabric: string[];
+    segment: string[];
+    suitableFor: string[];
+    rawMaterials: string[];
+    pattern: string[];
+  }
+> = {
   Clothes: {
     occasion: ['Casual', 'Formal', 'Party'],
     work: ['Office', 'Outdoor'],
@@ -132,7 +135,13 @@ function collectOptions(products: EnrichedProduct[], key: string): string[] {
 
 /* ── Filter keys that map to array fields ─────────── */
 const ARRAY_FILTER_KEYS: FilterKey[] = [
-  'occasion', 'work', 'fabric', 'segment', 'suitableFor', 'rawMaterials', 'pattern',
+  'occasion',
+  'work',
+  'fabric',
+  'segment',
+  'suitableFor',
+  'rawMaterials',
+  'pattern',
 ];
 
 interface ProductFeedProps {
@@ -142,6 +151,28 @@ interface ProductFeedProps {
 const ProductFeed: React.FC<ProductFeedProps> = ({ initialProducts }) => {
   const [showFilters, setShowFilters] = useState(false);
   const [sortBy, setSortBy] = useState('recommended');
+  const [isSortOpen, setIsSortOpen] = useState(false);
+  const sortRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
+        setIsSortOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const sortOptions = [
+    { label: 'RECOMMENDED', value: 'recommended' },
+    { label: 'NEWEST FIRST', value: 'newest' },
+    { label: 'POPULAR', value: 'popular' },
+    { label: 'PRICE: HIGH TO LOW', value: 'price-high-to-low' },
+    { label: 'PRICE: LOW TO HIGH', value: 'price-low-to-high' },
+  ];
+
+  const currentSortLabel = sortOptions.find(o => o.value === sortBy)?.label;
 
   /* ── Enrich products with filter attributes ──────── */
   const enrichedProducts = useMemo(
@@ -167,7 +198,10 @@ const ProductFeed: React.FC<ProductFeedProps> = ({ initialProducts }) => {
   const priceBounds = useMemo(() => {
     if (enrichedProducts.length === 0) return { min: 0, max: 1000 };
     const prices = enrichedProducts.map((p) => p.price);
-    return { min: Math.floor(Math.min(...prices)), max: Math.ceil(Math.max(...prices)) };
+    return {
+      min: Math.floor(Math.min(...prices)),
+      max: Math.ceil(Math.max(...prices)),
+    };
   }, [enrichedProducts]);
 
   /* ── Filter state ─────────────────────────────────── */
@@ -190,7 +224,9 @@ const ProductFeed: React.FC<ProductFeedProps> = ({ initialProducts }) => {
 
     // Category filter
     if (activeFilters.categories.length > 0) {
-      result = result.filter((p) => activeFilters.categories.includes(p.category));
+      result = result.filter((p) =>
+        activeFilters.categories.includes(p.category),
+      );
     }
 
     // Array-based attribute filters
@@ -241,23 +277,65 @@ const ProductFeed: React.FC<ProductFeedProps> = ({ initialProducts }) => {
 
   return (
     <div className="container">
+      <h2 className="sr-only">Product Listing</h2>
       {/* Metadata Bar */}
       <div className={styles.metaBar}>
         <div className={styles.itemCount}>
           <span>{filteredProducts.length} ITEMS</span>
         </div>
         <div className={styles.toggleFilters} onClick={toggleFilters}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            style={{ transform: showFilters ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}
+          >
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
           <span>{showFilters ? 'HIDE FILTER' : 'SHOW FILTER'}</span>
         </div>
-        <div className={styles.sortDropdown}>
-          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-            <option value="recommended">RECOMMENDED</option>
-            <option value="newest">NEWEST FIRST</option>
-            <option value="popular">POPULAR</option>
-            <option value="price-high-to-low">PRICE: HIGH TO LOW</option>
-            <option value="price-low-to-high">PRICE: LOW TO HIGH</option>
-          </select>
+        <div className={styles.sortDropdown} ref={sortRef}>
+           <div 
+            className={styles.sortHeader} 
+            onClick={() => setIsSortOpen(!isSortOpen)}
+          >
+            <span>{currentSortLabel}</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className={isSortOpen ? styles.rotated : ''}
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          {isSortOpen && (
+            <ul className={styles.sortOptions}>
+              {sortOptions.map((option) => (
+                <li 
+                  key={option.value}
+                  className={sortBy === option.value ? styles.activeOption : ''}
+                  onClick={() => {
+                    setSortBy(option.value);
+                    setIsSortOpen(false);
+                  }}
+                >
+                  {sortBy === option.value && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  )}
+                  {option.label}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
 

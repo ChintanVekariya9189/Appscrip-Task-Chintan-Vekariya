@@ -14,9 +14,25 @@
 
 .bannerContent {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 60px; /* Gap between sets */
+  width: max-content;
+  animation: marquee 40s linear infinite; /* Slower for more items */
+}
+
+.bannerSet {
+  display: flex;
+  align-items: center;
+  gap: 60px; /* Gap between items within a set */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .bannerItem {

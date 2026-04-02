@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 async function getProducts() {
   try {
     const res = await fetch(
-      'https://api.escuelajs.co/api/v1/products?offset=0&limit=15',
+      'https://api.escuelajs.co/api/v1/products?offset=0&limit=21',
       {
         next: { revalidate: 3600 }, // Cache for 1 hour
       },
